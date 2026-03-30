@@ -40,6 +40,7 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
+      align-items: center;
       padding: 60px 20px;
       transition: background 0.3s, color 0.3s;
     }
@@ -52,7 +53,7 @@
       border-radius: 4px;
       box-shadow: 0 2px 12px var(--shadow);
       position: relative;
-      align-self: flex-start;
+      align-self: center;
       transition: background 0.3s, box-shadow 0.3s;
     }
 
@@ -135,6 +136,25 @@
       font-style: italic;
     }
 
+    #leaves-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 700ms var(--ease-out);
+      transform: rotate(180deg);
+    }
+
+    [data-theme="light"] #leaves-overlay {
+      opacity: 0.5;
+    }
+
     @media (max-width: 600px) {
       .page {
         padding: 48px 28px 48px 36px;
@@ -184,6 +204,10 @@
       set up and working correctly, and it remains the first program most programmers ever write.
     </p>
   </div>
+
+  <video id="leaves-overlay" autoplay muted loop playsinline>
+    <source src="0330(1).mp4" type="video/mp4" />
+  </video>
 
   <script>
     const toggle = document.getElementById('toggleBtn');
